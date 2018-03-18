@@ -10,6 +10,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+
+        #region Fields
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -42,6 +45,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        #endregion
+
+        #region CONSTRUCTOR
+
         // Use this for initialization
         private void Start()
         {
@@ -57,6 +64,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+        #endregion
+
+        #region Properties
+
+        public MouseLook MouseLook
+        {
+            get { return m_MouseLook; }
+        }
+
+        #endregion
+
+        #region Methods
 
         // Update is called once per frame
         private void Update()
@@ -255,5 +274,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+        #endregion
+
     }
 }
